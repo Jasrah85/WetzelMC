@@ -127,7 +127,14 @@ export default function WetzellandPage() {
       </a>
 
       {/* Schedule */}
-      <h2 className="mt-14 text-2xl font-black text-white">Weekend Schedule</h2>
+      <h2 className="mt-14 text-2xl font-black text-white">
+        Shit Going On at Wetzelland 2026
+      </h2>
+      <p className="mt-2 max-w-3xl text-zinc-400">
+        Live music, bike events, contests, games, dunk tanks, skydivers,
+        burnouts, and plenty of rally chaos. Get signed up early for the
+        contests and games.
+      </p>
       <div className="mt-6 grid gap-6 lg:grid-cols-3">
         {SCHEDULE.map((d) => (
           <div key={d.day} className="rounded-lg border border-zinc-800 bg-zinc-900 p-6">
@@ -142,7 +149,9 @@ export default function WetzellandPage() {
       </div>
 
       {/* Tickets */}
-      <h2 className="mt-14 text-2xl font-black text-white">Tickets &amp; Passes</h2>
+      <h2 id="tickets" className="mt-14 scroll-mt-24 text-2xl font-black text-white">
+        Tickets &amp; Passes
+      </h2>
       <p className="mt-2 text-zinc-400 max-w-3xl">
         Pre-buy pricing ends July 19, but tickets and passes are also available at
         the gate starting Thursday at noon.
@@ -160,7 +169,9 @@ export default function WetzellandPage() {
       </div>
 
       {/* Rules */}
-      <h2 className="mt-14 text-2xl font-black text-white">Party Rules</h2>
+      <h2 id="rules" className="mt-14 scroll-mt-24 text-2xl font-black text-white">
+        Party Rules
+      </h2>
       <ul className="mt-4 max-w-3xl space-y-2 text-zinc-300 list-disc pl-5">
         {RULES.map((r) => (
           <li key={r}>{r}</li>
