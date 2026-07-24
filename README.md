@@ -15,9 +15,21 @@ The site runs without a CMS connected — CMS-driven sections (news, events, fly
 
 ## Connect Contentful
 
-1. Create a space at contentful.com and add the four content types described in the plan (§4): `post`, `event`, `flyer`, `faqItem`. Field IDs must match those names (camelCase, e.g. `publishDate`, `startDate`, `ticketUrl`).
-2. Copy `.env.example` → `.env.local` and fill in the Space ID and Content Delivery API token (Contentful → Settings → API keys).
-3. Restart `npm run dev` — published entries appear on the site.
+Content managed in the CMS: **Events** (calendar), **Posts** (news), **Flyers**, and **FAQ Items**.
+
+1. Log in to Contentful (club account) and create an empty space, e.g. "Wetzelland".
+2. Grab two values:
+   - **Space ID**: Settings → General settings
+   - **Management token**: Settings → API keys → Content management tokens → Generate personal token (starts with `CFPAT-`; used once by the setup script — don't commit or share it)
+3. Run the setup script (creates all four content types + a delivery API key; add `-- --seed` to also load the 2026 sample events):
+
+   ```bash
+   CONTENTFUL_SPACE_ID=xxx CONTENTFUL_MANAGEMENT_TOKEN=CFPAT-xxx npm run setup:contentful -- --seed
+   ```
+
+4. The script prints `CONTENTFUL_SPACE_ID` and `CONTENTFUL_ACCESS_TOKEN` — copy them into `.env.local` (see `.env.example`) and later into Vercel's environment variables.
+5. Restart `npm run dev` — published entries appear on the site.
+6. Invite club members in Contentful as **Editors** (they manage content; they never need API keys).
 
 ## Instant publishing (production)
 
