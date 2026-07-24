@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { getEvents, getPosts } from "@/lib/contentful";
-import { SAMPLE_EVENTS } from "@/lib/sample-events";
 import FacebookFeed from "@/components/FacebookFeed";
 
 export const revalidate = 3600; // re-fetch CMS content at most hourly
@@ -12,8 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const [cmsEvents, posts] = await Promise.all([getEvents(), getPosts(3)]);
-  const events = cmsEvents.length > 0 ? cmsEvents : SAMPLE_EVENTS;
+  const [events, posts] = await Promise.all([getEvents(), getPosts(3)]);
   const now = new Date();
   const upcoming = events
     .filter((e) => new Date(e.endDate ?? e.startDate) >= now)

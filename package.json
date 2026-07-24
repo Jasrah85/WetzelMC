@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "setup:contentful": "node scripts/setup-contentful.mjs"
+    "setup:contentful": "node scripts/setup-contentful.mjs",
+    "seed:content": "node scripts/seed-content.mjs"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^16.1.1",

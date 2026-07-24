@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { getEvents } from "@/lib/contentful";
-import { SAMPLE_EVENTS } from "@/lib/sample-events";
 import EventCalendar from "@/components/EventCalendar";
 import RichText from "@/components/RichText";
 
@@ -13,9 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default async function EventsPage() {
-  const cmsEvents = await getEvents();
-  const usingSampleData = cmsEvents.length === 0;
-  const events = usingSampleData ? SAMPLE_EVENTS : cmsEvents;
+  const events = await getEvents();
   const now = new Date();
   const upcoming = events.filter((e) => new Date(e.endDate ?? e.startDate) >= now);
 
@@ -26,11 +23,6 @@ export default async function EventsPage() {
         Everything happening at Wetzelland and around the club. The party is always
         the last full weekend of July.
       </p>
-      {usingSampleData && (
-        <p className="mt-3 inline-block rounded border border-amber-600/40 bg-amber-950/40 px-3 py-1.5 text-sm text-amber-400">
-          Showing sample events — publish <code>event</code> entries in Contentful to replace these.
-        </p>
-      )}
 
       <div className="mt-8">
         <EventCalendar
