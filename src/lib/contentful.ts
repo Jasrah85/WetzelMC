@@ -26,12 +26,22 @@ async function getEntries(
   query: Record<string, unknown> = {},
 ) {
   if (!client) return [];
-  const res = await client.getEntries({
-    content_type: contentType,
-    include: 2,
-    ...query,
-  } as EntriesQueries<AnySkeleton, undefined>);
-  return res.items;
+  try {
+    const res = await client.getEntries({
+      content_type: contentType,
+      include: 2,
+      ...query,
+    } as EntriesQueries<AnySkeleton, undefined>);
+    return res.items;
+  } catch (err) {
+    // Never let a CMS/network error break the build or a page render —
+    // fall back to empty so placeholder/sample content shows instead.
+    console.warn(
+      `[contentful] Failed to fetch "${contentType}":`,
+      err instanceof Error ? err.message : err,
+    );
+    return [];
+  }
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
