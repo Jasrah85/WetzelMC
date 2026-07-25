@@ -183,7 +183,7 @@ export default function HistoryPage() {
         {BACKGROUND_PHOTOS.filter((photo) => hasPhoto(photo.src)).map((photo) => (
           <div
             key={photo.src}
-            className="absolute rounded-lg border border-white/10 bg-cover opacity-[0.1] grayscale shadow-2xl shadow-black/50 blur-[0.3px] sm:opacity-[0.18]"
+            className="absolute rounded-lg border border-white/15 bg-cover opacity-[0.22] shadow-2xl shadow-black/50 brightness-110 saturate-110 sm:opacity-[0.34]"
             style={{
               backgroundImage: `url(${photo.src})`,
               backgroundPosition: photo.position ?? "center",
@@ -195,7 +195,7 @@ export default function HistoryPage() {
             }}
           />
         ))}
-        <div className="absolute inset-0 bg-zinc-950/70" />
+        <div className="absolute inset-0 bg-zinc-950/55" />
         <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-zinc-950 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-zinc-950 to-transparent" />
       </div>
