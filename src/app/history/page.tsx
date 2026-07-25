@@ -95,15 +95,6 @@ const BACKGROUND_PHOTOS: BackgroundPhoto[] = [
     position: "center 38%",
   },
   {
-    src: "/history/fallen-bikers-memorial-engraving-mikes-corner.webp",
-    top: "76%",
-    side: "right",
-    offset: "clamp(-9rem, -15vw, -4rem)",
-    width: "clamp(12rem, 30vw, 19rem)",
-    aspect: "16 / 10",
-    rotate: "7deg",
-  },
-  {
     src: "/history/fallen-bikers-memorial.webp",
     top: "82%",
     side: "right",
@@ -112,6 +103,15 @@ const BACKGROUND_PHOTOS: BackgroundPhoto[] = [
     aspect: "4 / 3",
     rotate: "-5deg",
     position: "center 38%",
+  },
+  {
+    src: "/history/fallen-bikers-memorial-engraving-mikes-corner.webp",
+    top: "76%",
+    side: "right",
+    offset: "clamp(-9rem, -15vw, -4rem)",
+    width: "clamp(12rem, 30vw, 19rem)",
+    aspect: "16 / 10",
+    rotate: "7deg",
   },
   {
     src: "/history/fallen-bikers-memorial-sign.webp",
@@ -183,7 +183,7 @@ export default function HistoryPage() {
         {BACKGROUND_PHOTOS.filter((photo) => hasPhoto(photo.src)).map((photo) => (
           <div
             key={photo.src}
-            className="absolute rounded-lg border border-white/15 bg-cover opacity-[0.22] shadow-2xl shadow-black/50 brightness-110 saturate-110 sm:opacity-[0.34]"
+            className="absolute rounded-lg border border-white/15 bg-cover opacity-[0.22] shadow-2xl shadow-black/50 brightness-110 saturate-110 sm:opacity-[0.75]"
             style={{
               backgroundImage: `url(${photo.src})`,
               backgroundPosition: photo.position ?? "center",
